@@ -54,6 +54,7 @@ const initialState = () => ({
 
 let state = loadState();
 let toastTimer;
+let replyTimer;
 let isThinking = false;
 
 const $ = (selector) => document.querySelector(selector);
@@ -150,7 +151,7 @@ function submitAnswer(value) {
   renderRequirements();
   showTyping();
 
-  window.setTimeout(() => {
+  replyTimer = window.setTimeout(() => {
     hideTyping();
     isThinking = false;
     if (state.step < questions.length) {
@@ -286,6 +287,9 @@ function exportMarkdown() {
 }
 
 function resetProject() {
+  window.clearTimeout(replyTimer);
+  isThinking = false;
+  hideTyping();
   state = initialState();
   localStorage.removeItem(STORAGE_KEY);
   chatMessages.innerHTML = "";
