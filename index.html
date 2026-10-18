@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#f6f7f9" />
+    <meta name="description" content="需求桥：把模糊想法变成双方确认的开发需求和验收清单。" />
+    <title>需求桥 · 需求澄清工作台</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Noto+Sans+SC:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar">
+        <a class="brand" href="#" aria-label="需求桥首页">
+          <span class="brand-mark"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M6 10.5h8.5a5 5 0 0 1 5 5v6M26 21.5h-8.5a5 5 0 0 1-5-5v-6"/><circle cx="6" cy="10.5" r="2.2"/><circle cx="26" cy="21.5" r="2.2"/></svg></span>
+          <span class="brand-copy"><strong>需求桥</strong><small>让想法走向交付</small></span>
+        </a>
+
+        <button class="new-project" id="newProject"><span>＋</span> 新建需求项目</button>
+
+        <div class="side-label">工作空间</div>
+        <nav class="project-nav" aria-label="项目">
+          <button class="project-link active" id="activeProject"><span class="project-dot"></span><span>活动报名网站</span><span class="nav-more">···</span></button>
+        </nav>
+
+        <div class="sidebar-bottom">
+          <div class="profile-avatar">林</div>
+          <div class="profile-copy"><strong>林同学</strong><small>学生团队 · 免费版</small></div>
+          <button class="icon-button more-button" aria-label="更多账户选项">···</button>
+        </div>
+      </aside>
+
+      <main class="main-area">
+        <header class="topbar">
+          <div class="breadcrumbs"><span>我的项目</span><span class="crumb-sep">/</span><strong>活动报名网站</strong></div>
+          <div class="top-actions"><span class="saved-status"><i></i> 已自动保存</span><button class="share-button" id="shareButton"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M12.8 6.2 7.2 9.1m0 1.8 5.6 2.9"/><circle cx="14.5" cy="5.3" r="2"/><circle cx="5.5" cy="10" r="2"/><circle cx="14.5" cy="14.7" r="2"/></svg> 邀请协作</button><div class="top-avatar">林</div></div>
+        </header>
+
+        <section class="workspace">
+          <div class="page-heading">
+            <div><div class="eyebrow"><span class="eyebrow-dot"></span>需求澄清工作台</div><h1>把想法，一步步变成共识。</h1><p>和 AI 一起梳理需求，让每个功能都有清晰的边界和验收标准。</p></div>
+            <button class="export-button" id="exportButton"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 3.5v8m0 0 3-3m-3 3-3-3M4.5 13v2.5h11V13"/></svg> 导出需求文档</button>
+          </div>
+
+          <div class="progress-card">
+            <div class="progress-main"><div class="progress-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 7h14M5 12h9m-9 5h6"/><circle cx="18" cy="16.5" r="3.5"/><path d="m16.6 16.5 1 1 2-2"/></svg></div><div class="progress-copy"><strong>需求确认进度</strong><span id="progressText">先回答几个问题，让需求更完整</span></div></div>
+            <div class="progress-track-wrap"><div class="progress-meta"><span id="progressCount">0 / 4 项已确认</span><span id="progressPercent">0%</span></div><div class="progress-track"><span id="progressBar"></span></div></div>
+          </div>
+
+          <div class="workspace-grid">
+            <section class="panel conversation-panel" aria-labelledby="conversationTitle">
+              <div class="panel-header"><div class="panel-title-group"><div class="ai-avatar"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 3 1.7 5.3L19 10l-5.3 1.7L12 17l-1.7-5.3L5 10l5.3-1.7L12 3Z"/><path d="m19 15 .8 2.2L22 18l-2.2.8L19 21l-.8-2.2L16 18l2.2-.8L19 15Z"/></svg></div><div><h2 id="conversationTitle">需求小助手</h2><p>AI 助手 · 正在和你一起梳理</p></div></div><button class="icon-button" id="resetButton" title="重新开始" aria-label="重新开始">↻</button></div>
+              <div class="chat-scroll" id="chatScroll"><div class="chat-messages" id="chatMessages" aria-live="polite"></div><div class="typing-indicator hidden" id="typingIndicator"><span></span><span></span><span></span><i>正在整理问题…</i></div></div>
+              <form class="composer" id="answerForm"><label class="sr-only" for="answerInput">输入你的回答</label><textarea id="answerInput" rows="1" placeholder="回答问题，或补充你的想法…" disabled></textarea><div class="composer-footer"><span><kbd>Enter</kbd> 发送 <span class="composer-hint">· 需求内容仅作为草稿</span></span><button type="submit" id="sendButton" disabled aria-label="发送回答"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10h11m-4-4 4 4-4 4"/></svg></button></div></form>
+              <div class="privacy-note"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 2.3 3.3 4v3.4c0 3 2 5.2 4.7 6.3 2.7-1.1 4.7-3.3 4.7-6.3V4L8 2.3Z"/><path d="m6 7.8 1.3 1.3L10 6.5"/></svg>AI 负责起草，最终需求由你和客户共同确认。</div>
+            </section>
+
+            <section class="panel requirements-panel" aria-labelledby="requirementsTitle">
+              <div class="panel-header requirements-header"><div><div class="panel-kicker">LIVE DOCUMENT</div><h2 id="requirementsTitle">需求清单</h2></div><button class="icon-button" id="addRequirement" title="添加需求" aria-label="添加需求">＋</button></div>
+              <div class="doc-context"><span class="doc-status-dot"></span><span id="docStatus">草稿 · 等待补充信息</span><span class="doc-updated">刚刚更新</span></div>
+              <div class="requirements-list" id="requirementsList"></div>
+              <div class="acceptance-section"><div class="acceptance-heading"><div><div class="panel-kicker">DEFINITION OF DONE</div><h3>验收检查项</h3></div><span class="count-pill" id="checkCount">0 项</span></div><div class="acceptance-list" id="acceptanceList"><div class="empty-checks"><span class="empty-check-icon">✓</span><p>确认需求后，验收检查项会在这里生成</p></div></div></div>
+              <div class="review-note"><svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="5.8"/><path d="M8 7v3m0-5v.2"/></svg><span>内容由 AI 整理，请与客户确认后再作为交付依据。</span></div>
+            </section>
+          </div>
+          <footer class="workspace-footer"><span>需求桥 <b>·</b> 让客户和开发者站在同一页</span><span>一个更清晰的开始 <span class="footer-star">✳</span></span></footer>
+        </section>
+      </main>
+    </div>
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+    <div class="modal-backdrop hidden" id="modalBackdrop"><section class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle"><button class="modal-close" id="modalClose" aria-label="关闭">×</button><div class="modal-icon">✳</div><h2 id="modalTitle">邀请客户一起确认</h2><p>一起把需求讲清楚，交付的时候少一点“我以为”。</p><label for="inviteEmail">客户邮箱</label><div class="invite-row"><input type="email" id="inviteEmail" placeholder="name@example.com" /><button id="inviteSend">发送邀请</button></div><small>协作邀请功能将在正式版本中开放。</small></section></div>
+    <script src="app.js"></script>
+  </body>
+</html>
