@@ -23,7 +23,7 @@
 
         <div class="side-label">工作空间</div>
         <nav class="project-nav" aria-label="项目">
-          <button class="project-link active" id="activeProject"><span class="project-dot"></span><span>活动报名网站</span><span class="nav-more">···</span></button>
+          <button class="project-link active" id="activeProject"><span class="project-dot"></span><span id="activeProjectName">新需求项目</span><span class="nav-more">···</span></button>
         </nav>
 
         <div class="sidebar-bottom">
@@ -35,8 +35,8 @@
 
       <main class="main-area">
         <header class="topbar">
-          <div class="breadcrumbs"><span>我的项目</span><span class="crumb-sep">/</span><strong>活动报名网站</strong></div>
-          <div class="top-actions"><span class="saved-status"><i></i> 已自动保存</span><button class="share-button" id="shareButton"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M12.8 6.2 7.2 9.1m0 1.8 5.6 2.9"/><circle cx="14.5" cy="5.3" r="2"/><circle cx="5.5" cy="10" r="2"/><circle cx="14.5" cy="14.7" r="2"/></svg> 邀请协作</button><div class="top-avatar">林</div></div>
+          <div class="breadcrumbs"><span>我的项目</span><span class="crumb-sep">/</span><strong id="projectTitle">新需求项目</strong></div>
+          <div class="top-actions"><span class="ai-mode local" id="aiMode"><i></i> 本地演示逻辑</span><span class="saved-status"><i></i> 已自动保存</span><button class="share-button" id="shareButton"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M12.8 6.2 7.2 9.1m0 1.8 5.6 2.9"/><circle cx="14.5" cy="5.3" r="2"/><circle cx="5.5" cy="10" r="2"/><circle cx="14.5" cy="14.7" r="2"/></svg> 邀请协作</button><div class="top-avatar">林</div></div>
         </header>
 
         <section class="workspace">
@@ -54,7 +54,7 @@
             <section class="panel conversation-panel" aria-labelledby="conversationTitle">
               <div class="panel-header"><div class="panel-title-group"><div class="ai-avatar"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 3 1.7 5.3L19 10l-5.3 1.7L12 17l-1.7-5.3L5 10l5.3-1.7L12 3Z"/><path d="m19 15 .8 2.2L22 18l-2.2.8L19 21l-.8-2.2L16 18l2.2-.8L19 15Z"/></svg></div><div><h2 id="conversationTitle">需求小助手</h2><p>AI 助手 · 正在和你一起梳理</p></div></div><button class="icon-button" id="resetButton" title="重新开始" aria-label="重新开始">↻</button></div>
               <div class="chat-scroll" id="chatScroll"><div class="chat-messages" id="chatMessages" aria-live="polite"></div><div class="typing-indicator hidden" id="typingIndicator"><span></span><span></span><span></span><i>正在整理问题…</i></div></div>
-              <form class="composer" id="answerForm"><label class="sr-only" for="answerInput">输入你的回答</label><textarea id="answerInput" rows="1" placeholder="回答问题，或补充你的想法…" disabled></textarea><div class="composer-footer"><span><kbd>Enter</kbd> 发送 <span class="composer-hint">· 需求内容仅作为草稿</span></span><button type="submit" id="sendButton" disabled aria-label="发送回答"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10h11m-4-4 4 4-4 4"/></svg></button></div></form>
+              <form class="composer" id="answerForm"><label class="sr-only" for="answerInput">输入你的回答</label><textarea id="answerInput" rows="1" placeholder="描述需求、补充细节，或告诉我哪里需要修改…" disabled></textarea><div class="composer-footer"><span><kbd>Enter</kbd> 发送 <span class="composer-hint">· 草稿仅保存在本机浏览器</span></span><div class="composer-actions"><button type="button" class="finish-button" id="finishButton" disabled>整理需求草稿</button><button type="submit" id="sendButton" disabled aria-label="发送回答"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10h11m-4-4 4 4-4 4"/></svg></button></div></div></form>
               <div class="privacy-note"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 2.3 3.3 4v3.4c0 3 2 5.2 4.7 6.3 2.7-1.1 4.7-3.3 4.7-6.3V4L8 2.3Z"/><path d="m6 7.8 1.3 1.3L10 6.5"/></svg>AI 负责起草，最终需求由你和客户共同确认。</div>
             </section>
 
